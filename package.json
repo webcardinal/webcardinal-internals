@@ -1,0 +1,11 @@
+{
+  "name": "@webcardinal/internals",
+  "version": "1.0.0",
+  "description": "Util functions used by any @webcardinal or @cardinal component.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webcardinal/webcardinal-internals.git"
+  },
+  "license": "MIT"
+}
