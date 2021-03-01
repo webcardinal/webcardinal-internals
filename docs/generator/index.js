@@ -22,6 +22,10 @@ async function generator(docs, config) {
   for (const component of docs.components) {
     const componentPath = path.join(componentsPath, `${component.tag}.json`);
 
+    delete component.dirPath;
+    delete component.readmePath;
+    delete component.usagesDir;
+    
     try {
       await writeFile(componentPath, JSON.stringify(component, null, 2));
       cheatsheet[component.tag] = {
@@ -32,6 +36,7 @@ async function generator(docs, config) {
       console.error(error);
     }
 
+    // fs.writeFileSync(path.join(docsPath, "cheatsheet.json"), JSON.stringify(cheatsheet));
     fs.writeFileSync(path.join(docsPath, "cheatsheet.json"), JSON.stringify(cheatsheet, null, 2));
   }
 }
