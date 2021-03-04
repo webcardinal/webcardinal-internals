@@ -29,20 +29,17 @@ async function generator(docs, config) {
     try {
       await writeFile(componentPath, JSON.stringify(component, null, 2));
 
-      let disableCheatsheet = false;
+      cheatsheet[component.tag] = {
+        source: config.component
+      };
+
       if (component.docsTags) {
         for (const { name, text } of component.docsTags) {
           if (name === 'disable' && text.trim() === 'cheatsheet') {
-            disableCheatsheet = true;
+            cheatsheet[component.tag].disableCheatsheet = true;
             break;
           }
         }
-      }
-
-      if (!disableCheatsheet) {
-        cheatsheet[component.tag] = {
-          source: config.component
-        };
       }
     } catch (error) {
       console.error(error);
